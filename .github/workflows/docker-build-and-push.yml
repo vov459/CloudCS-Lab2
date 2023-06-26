@@ -6,8 +6,8 @@ on:
       - main
 
 env:
-  DOCKER_USER: ${{secrets.DOCKERHUB_USERNAME}}
-  DOCKER_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
+  DOCKER_USER: vladimir034
+  DOCKER_PASSWORD: Vhonda125
   REPO_NAME: ${{secrets.DOCKERHUB_REPO}}
 
 jobs:

@@ -9,13 +9,13 @@ from keycloak_utils import get_keycloak_data
 
 
 class Instance(BaseModel):
-    cylinders: int
-    displacement: float
-    horsepower: float
-    weight: float
-    acceleration: float
-    model_year: int
-    origin: int
+    Pclass: int
+    Sex: str
+    Age: float
+    SibSp: int
+    Parch: int
+    Fare: float
+    Embarked: str
 
 
 app = FastAPI()

@@ -8,9 +8,8 @@ from pickle import dumps
 
 @pytest.fixture
 def create_data() -> dict[str, int | float]:
-    return {"cylinders": 4, "displacement": 113.0, "horsepower": 95.0,
-            "weight": 2228.0, "acceleration": 14.0, "model_year": 71,
-            "origin": 3}
+    return {"Pclass": 3, "Sex": "male", "Age": 40.0,
+            "SibSp": 4, "Parch": 1, "Fare": 31.0000, "Embarked": "S"}
 
 
 def test_make_inference(monkeypatch, create_data):
@@ -18,13 +17,13 @@ def test_make_inference(monkeypatch, create_data):
         assert create_data == {
             key: value[0] for key, value in data.to_dict("list").items()
         }
-        return [[37.973]]
+        return [[1.0]]
 
     in_model = Pipeline([])
     monkeypatch.setattr(Pipeline, "predict", mock_get_predictions)
 
     result = make_inference(in_model, create_data)
-    assert result == {"mpg": 37.973}
+    assert result == {"Survived": [1.0]}
 
 
 @pytest.fixture()
