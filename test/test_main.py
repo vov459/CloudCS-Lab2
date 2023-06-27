@@ -101,7 +101,7 @@ def test_inference(init_test_client):
     response = init_test_client.post(
         "/predictions",
         headers={"Authorization": "Bearer Ok"},
-        json={"Pclass": 3, "Sex": "male", "Age": 40.0,
+        json={"Pclass": 3, "Sex": "male", "Age": 50.0,
               "SibSp": 4, "Parch": 1, "Fare": 31.0000, "Embarked": "S"}
     )
     assert response.status_code == 200
