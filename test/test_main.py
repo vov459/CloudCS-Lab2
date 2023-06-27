@@ -48,6 +48,7 @@ def test_healthcheck(init_test_client) -> None:
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
 
+
 def test_token_correctness(init_test_client) -> None:
     response = init_test_client.post(
         "/predictions",
