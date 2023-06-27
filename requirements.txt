@@ -10,3 +10,4 @@ pydantic==1.10.5
 pytest==7.2.1
 pycodestyle==2.10.0
 python-keycloak==2.14.0
+starlette~=0.25.0

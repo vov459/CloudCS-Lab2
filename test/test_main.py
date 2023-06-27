@@ -48,13 +48,12 @@ def test_healthcheck(init_test_client) -> None:
     assert response.status_code == 200
     assert response.json() == {"status": "ok"}
 
-
 def test_token_correctness(init_test_client) -> None:
     response = init_test_client.post(
         "/predictions",
-        headers={"Authorization": "Bearer 00000"},
-        json={"Pclass": 1, "Sex": "Famale", "Age": 23.0,
-              "SibSp": 1, "Parch": 2, "Fare": 13.0000, "Embarked": "C"}
+        headers={"Authorization": "Bearer Ok"},
+        json={"Pclass": 0, "Sex": "famale", "Age": 0,
+              "SibSp": 0, "Parch": 0, "Fare": 0, "Embarked": "C"}
     )
     assert response.status_code == 200
     assert "Survived" in response.json()
@@ -63,8 +62,8 @@ def test_token_correctness(init_test_client) -> None:
 def test_token_not_correctness(init_test_client):
     response = init_test_client.post(
         "/predictions",
-        headers={"Authorization": "Bearer kedjkj"},
-        json={"Pclass": 0, "Sex": "Famale", "Age": 0,
+        headers={"Authorization": "Bearer Not_logged"},
+        json={"Pclass": 0, "Sex": "famale", "Age": 0,
               "SibSp": 0, "Parch": 0, "Fare": 0, "Embarked": "C"}
     )
     assert response.status_code == 401
@@ -77,7 +76,7 @@ def test_access_denied(init_test_client):
     response = init_test_client.post(
         "/predictions",
         headers={"Authorization": "Bearer Not_authorized"},
-        json={"Pclass": 0, "Sex": "Famale", "Age": 0,
+        json={"Pclass": 0, "Sex": "famale", "Age": 0,
               "SibSp": 0, "Parch": 0, "Fare": 0, "Embarked": "C"}
     )
     assert response.status_code == 403
@@ -89,7 +88,7 @@ def test_access_denied(init_test_client):
 def test_token_absent(init_test_client):
     response = init_test_client.post(
         "/predictions",
-        json={"Pclass": 0, "Sex": "Famale", "Age": 0,
+        json={"Pclass": 0, "Sex": "famale", "Age": 0,
               "SibSp": 0, "Parch": 0, "Fare": 0, "Embarked": "C"}
     )
     assert response.status_code == 401
