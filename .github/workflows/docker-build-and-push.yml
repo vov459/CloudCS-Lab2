@@ -6,9 +6,9 @@ on:
       - main
 
 env:
-    DOCKER_USER: ${{vladimir034}}
-    DOCKER_PASSWORD: ${{Vhonda125}}
-    REPO_NAME: ${{vladimir034/cloud_lab2}}
+    DOCKER_USER: ${{secrets.DOCKERHUB_USERNAME}}
+    DOCKER_PASSWORD: ${{secrets.DOCKERHUB_PASSWORD}}
+    REPO_NAME: ${{secrets.DOCKERHUB_REPO}}
 
 jobs:
   tests:
